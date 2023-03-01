@@ -2,17 +2,62 @@
 
 import sys
 import threading
+import numpy as np
+
+
+def depth_of_node(n,parents,depth):
+
+    node=int(parents[n])
+    
+
+    depth=depth+1
+
+    
+    
+    if(node!=-1):
+        return depth_of_node(node,parents,depth)
+        
+        
+    return int(depth)
+    
 
 
 def compute_height(n, parents):
+
     # Write this function
-    max_height = 0
+    max_height = int(0)
+    hg=int(0)
+    a=int(0)
+    
+    i=int(0)
+
+    while(i<n):
+        hg=depth_of_node(i,parents,a)
+        
+        if(int(hg)>int(max_height)):max_height=hg
+        i+=1
+    
+
+    
     # Your code here
     return max_height
 
 
 def main():
     # implement input form keyboard and from files
+    n=int(input())
+
+    text=input()
+
+    lst=text.split()
+
+    arr=np.asarray(lst)
+
+    
+
+    h=compute_height(n,arr)
+
+    print(h)
     
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
