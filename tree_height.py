@@ -50,9 +50,9 @@ def main():
     
     
     if(text.startswith("F")):
-        filename=input()
+        filename=text2
         if(filename.startswith("a")):return
-        
+
         file=open(filename,"r")
         n=int(file.readline())
         text=(file.readline())
