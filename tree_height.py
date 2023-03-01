@@ -63,7 +63,7 @@ def main():
         print(h)
 
     else:
-        n=int(input())
+        n=int(text)
 
         text=input()
 
