@@ -49,9 +49,10 @@ def main():
     text2=input()
     
     
+    
     if(text.startswith("F")):
-        filename=text2
-        if(filename.startswith("a")):return
+        filename="/workspaces/tree-height-from-empty-martacepurite/test/"+text2
+        if(filename.endswith("a")):return
 
         file=open(filename,"r")
         n=int(file.readline())
