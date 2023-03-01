@@ -65,12 +65,12 @@ def main():
 
         print(h)
 
-    else:
-        n=int(text)
+    elif(text.startswith("I")):
+        n=int(text2)
 
-        
+        text3=input()
 
-        lst=text2.split()
+        lst=text3.split()
 
         arr=np.asarray(lst)
 
