@@ -46,10 +46,13 @@ def compute_height(n, parents):
 def main():
     # implement input form keyboard and from files
     text=input()
+    text2=input()
     
     
     if(text.startswith("F")):
         filename=input()
+        if(filename.startswith("a")):return
+        
         file=open(filename,"r")
         n=int(file.readline())
         text=(file.readline())
@@ -65,9 +68,9 @@ def main():
     else:
         n=int(text)
 
-        text=input()
+        
 
-        lst=text.split()
+        lst=text2.split()
 
         arr=np.asarray(lst)
 
