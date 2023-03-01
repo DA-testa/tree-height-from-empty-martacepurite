@@ -51,7 +51,7 @@ def main():
     
     
     if(text.startswith("F")):
-        filename="/workspaces/tree-height-from-empty-martacepurite/test/"+text2
+        filename="test/"+text2
         if(filename.endswith("a")):return
 
         file=open(filename,"r")
