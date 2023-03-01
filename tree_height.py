@@ -45,19 +45,36 @@ def compute_height(n, parents):
 
 def main():
     # implement input form keyboard and from files
-    n=int(input())
-
     text=input()
-
-    lst=text.split()
-
-    arr=np.asarray(lst)
-
     
+    
+    if(text.startswith("F")):
+        filename=input()
+        file=open(filename,"r")
+        n=int(file.readline())
+        text=(file.readline())
 
-    h=compute_height(n,arr)
+        lst=text.split()
 
-    print(h)
+        arr=np.asarray(lst)
+
+        h=compute_height(n,arr)
+
+        print(h)
+
+    else:
+        n=int(input())
+
+        text=input()
+
+        lst=text.split()
+
+        arr=np.asarray(lst)
+
+        h=compute_height(n,arr)
+
+        print(h)
+
     
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
