@@ -5,7 +5,7 @@ import threading
 import numpy as np
 
 
-def depth_of_node(n,parents,depth):
+def compute_height(n,parents,depth):
 
     node=int(parents[n])
     
@@ -15,32 +15,14 @@ def depth_of_node(n,parents,depth):
     
     
     if(node!=-1):
-        return depth_of_node(node,parents,depth)
+        return compute_height(node,parents,depth)
         
         
     return int(depth)
     
 
 
-def compute_height(n, parents):
 
-    # Write this function
-    max_height = int(0)
-    hg=int(0)
-    a=int(0)
-    
-    i=int(0)
-
-    while(i<n):
-        hg=depth_of_node(i,parents,a)
-        
-        if(int(hg)>int(max_height)):max_height=hg
-        i+=1
-    
-
-    
-    # Your code here
-    return max_height
 
 
 def main():
@@ -62,9 +44,19 @@ def main():
 
         arr=np.asarray(lst)
 
-        h=compute_height(n,arr)
+        max_height = int(0)
+        hg=int(0)
+        a=int(0)
+    
+        i=int(0)
 
-        print(h)
+        while(i<n):
+            hg=compute_height(i,arr,a)
+        
+            if(int(hg)>int(max_height)):max_height=hg
+            i+=1
+
+        print(max_height)
 
     elif(text.startswith("I")):
         n=int(text2)
@@ -75,9 +67,19 @@ def main():
 
         arr=np.asarray(lst)
 
-        h=compute_height(n,arr)
+        max_height = int(0)
+        hg=int(0)
+        a=int(0)
+    
+        i=int(0)
 
-        print(h)
+        while(i<n):
+            hg=compute_height(i,arr,a)
+        
+            if(int(hg)>int(max_height)):max_height=hg
+            i+=1
+
+        print(max_height)
 
     
     # let user input file name to use, don't allow file names with letter a
