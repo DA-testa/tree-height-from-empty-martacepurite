@@ -5,17 +5,22 @@ import threading
 import numpy as np
 
 
-def compute_height(n,parents,depth):
-
-    node=int(parents[n])
-    
-
-    depth=depth+1
+def compute_height(n,parents):
 
     
     
-    if(node!=-1):
-        return compute_height(node,parents,depth)
+    depth=1
+    
+    node=parents[n]
+    
+    
+    while(True):
+        
+        if(node==int(-1)):break
+
+        newn=parents[node]
+        node=newn
+        depth=depth+1
         
         
     return int(depth)
@@ -42,16 +47,16 @@ def main():
 
         lst=text.split()
 
-        arr=np.asarray(lst)
+        arr=np.asarray(lst,dtype=int)
 
         max_height = int(0)
         hg=int(0)
-        a=int(0)
+        
     
         i=int(0)
 
         while(i<n):
-            hg=compute_height(i,arr,a)
+            hg=compute_height(i,arr)
         
             if(int(hg)>int(max_height)):max_height=hg
             i+=1
@@ -65,16 +70,16 @@ def main():
 
         lst=text3.split()
 
-        arr=np.asarray(lst)
+        arr=np.asarray(lst,dtype=int)
 
         max_height = int(0)
         hg=int(0)
-        a=int(0)
+        
     
         i=int(0)
 
         while(i<n):
-            hg=compute_height(i,arr,a)
+            hg=compute_height(i,arr)
         
             if(int(hg)>int(max_height)):max_height=hg
             i+=1
