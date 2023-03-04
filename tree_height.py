@@ -5,37 +5,39 @@ import threading
 import numpy as np
 
 
-def compute_height(n,parents):
+def depth_of_node(n,parents,deptharr):
 
-    
-    
-    depth=1
-    
-    node=parents[n]
-    
-    
-    while(True):
-        
-        if(node==int(-1)):break
+    if(parents[n]==-1):return 1
 
-        newn=parents[node]
-        node=newn
-        depth=depth+1
-        
-        
-    return depth
+    if(deptharr[n]!=0):return deptharr[n]
+
+    deptharr[n]=depth_of_node(parents[n],parents,deptharr)+1
+
+    return deptharr[n]
     
 
 
+def compute_height(n, parents):
 
+    max_height = int(0)
+    
+    i=int(0)
+
+    dparr=np.zeros(n,dtype=int)
+
+    while(i<n):
+        dparr[i]=depth_of_node(i,parents,dparr) 
+         
+        i+=1
+    
+    max_height=np.amax(dparr)
+
+    return max_height
 
 
 def main():
-    # implement input form keyboard and from files
     text=input()
     text2=input()
-    
-    
     
     if(text.startswith("F")):
         filename="test/"+text2
@@ -49,22 +51,9 @@ def main():
 
         arr=np.asarray(lst,dtype=int)
 
-        max_height = int(0)
-        hg=int(0)
-        
-        it = np.nditer(arr, flags=['f_index'])
-        while not it.finished:
-            
-            hg=compute_height(it.index,arr)
-            if(hg>max_height):max_height=hg
-            is_not_finished = it.iternext()
+        h=compute_height(n,arr)
 
-    
-
-        
-            
-
-        print(max_height)
+        print(h)
 
     elif(text.startswith("I")):
         n=int(text2)
@@ -75,32 +64,10 @@ def main():
 
         arr=np.asarray(lst,dtype=int)
 
-        max_height = int(0)
-        hg=int(0)
-        
-        it = np.nditer(arr, flags=['f_index'])
-        while not it.finished:
-            
-            hg=compute_height(it.index,arr)
-            if(hg>max_height):max_height=hg
-            is_not_finished = it.iternext()
+        h=compute_height(n,arr)
 
-            
+        print(h)
 
-        print(max_height)
-
-    
-    # let user input file name to use, don't allow file names with letter a
-    # account for github input inprecision
-    
-    # input number of elements
-    # input values in one variable, separate with space, split these values in an array
-    # call the function and output it's result
-
-
-# In Python, the default limit on recursion depth is rather low,
-# so raise it here for this problem. Note that to take advantage
-# of bigger stack, we have to launch the computation in a new thread.
-sys.setrecursionlimit(10**7)  # max depth of recursion
-threading.stack_size(2**27)   # new thread will get stack of such size
+sys.setrecursionlimit(10**7)
+threading.stack_size(2**27) 
 threading.Thread(target=main).start()
