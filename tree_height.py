@@ -23,7 +23,7 @@ def compute_height(n,parents):
         depth=depth+1
         
         
-    return int(depth)
+    return depth
     
 
 
@@ -52,14 +52,17 @@ def main():
         max_height = int(0)
         hg=int(0)
         
-    
-        i=int(0)
+        it = np.nditer(arr, flags=['f_index'])
+        while not it.finished:
+            
+            hg=compute_height(it.index,arr)
+            if(hg>max_height):max_height=hg
+            is_not_finished = it.iternext()
 
-        while(i<n):
-            hg=compute_height(i,arr)
+    
+
         
-            if(int(hg)>int(max_height)):max_height=hg
-            i+=1
+            
 
         print(max_height)
 
@@ -75,14 +78,14 @@ def main():
         max_height = int(0)
         hg=int(0)
         
-    
-        i=int(0)
+        it = np.nditer(arr, flags=['f_index'])
+        while not it.finished:
+            
+            hg=compute_height(it.index,arr)
+            if(hg>max_height):max_height=hg
+            is_not_finished = it.iternext()
 
-        while(i<n):
-            hg=compute_height(i,arr)
-        
-            if(int(hg)>int(max_height)):max_height=hg
-            i+=1
+            
 
         print(max_height)
 
